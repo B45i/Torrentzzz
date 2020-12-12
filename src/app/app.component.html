@@ -1,19 +1,66 @@
 <ion-app>
-  <ion-header [translucent]="true">
-      <ion-toolbar>
-          <ion-title>Torrentz 3</ion-title>
-      </ion-toolbar>
-      <ion-toolbar>
-          <div class="search-box">
-              <ion-input placeholder="Enter Title" [(ngModel)]="text"></ion-input>
-              <ion-button slot="end" fill="solid"
-                  ><ion-icon name="search"></ion-icon>
-              </ion-button>
-          </div>
-      </ion-toolbar>
-  </ion-header>
-  <ion-content [fullscreen]="true"> 
+    <ion-header [translucent]="true">
+        <ion-toolbar>
+            <ion-title>Torrentz 3</ion-title>
+        </ion-toolbar>
+        <ion-toolbar>
+            <div class="search-box">
+                <ion-input
+                    placeholder="Search Torrents"
+                    [(ngModel)]="text"
+                ></ion-input>
+                <ion-button
+                    slot="end"
+                    fill="solid"
+                    [disabled]="!text || isLoading"
+                    (click)="onSearch()"
+                >
+                    <ion-icon name="search"></ion-icon>
+                </ion-button>
+            </div>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content [fullscreen]="true">
+        <ion-progress-bar
+            type="indeterminate"
+            *ngIf="isLoading"
+        ></ion-progress-bar>
+        <ion-list *ngIf="torrents">
+            <ng-container *ngFor="let torrent of torrents">
+                <ion-item *ngIf="torrent.magnet">
+                    <ion-label>
+                        <h2>{{ torrent?.title }}</h2>
+                        <h4>Source: {{ torrent?.provider }}</h4>
 
-      {{text}}
-  </ion-content>
+                        <ion-chip color="primary" *ngIf="torrent.size">
+                            <ion-icon name="save-outline"></ion-icon>
+                            <ion-label>{{ torrent.size }}</ion-label>
+                        </ion-chip>
+
+                        <ion-chip color="primary" *ngIf="torrent.peers">
+                            <ion-icon name="people-outline"></ion-icon>
+                            <ion-label>{{ torrent.peers }}</ion-label>
+                        </ion-chip>
+                        <ion-chip color="primary" *ngIf="torrent.seeds">
+                            <ion-icon name="cloud-upload-outline"></ion-icon>
+                            <ion-label>{{ torrent.seeds }}</ion-label>
+                        </ion-chip>
+                        <ion-chip color="primary" *ngIf="torrent.time">
+                            <ion-icon name="time-outline"></ion-icon>
+                            <ion-label>{{ torrent.time }}</ion-label>
+                        </ion-chip>
+                    </ion-label>
+
+                    <ion-button
+                        expand="full"
+                        size="large"
+                        shape="round"
+                        (click)="copyMagnet(torrent.magnet)"
+                    >
+                        <ion-icon name="magnet-outline"></ion-icon>
+                    </ion-button>
+                </ion-item>
+            </ng-container>
+        </ion-list>
+    </ion-content>
 </ion-app>
