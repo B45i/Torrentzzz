@@ -25,7 +25,7 @@
             type="indeterminate"
             *ngIf="isLoading"
         ></ion-progress-bar>
-        <ion-list *ngIf="torrents">
+        <ion-list *ngIf="torrents" inset="true">
             <ng-container *ngFor="let torrent of torrents">
                 <ion-item *ngIf="torrent.magnet">
                     <ion-label>
@@ -53,8 +53,8 @@
 
                     <ion-button
                         expand="full"
-                        size="large"
                         shape="round"
+                        class="mag-btn"
                         (click)="copyMagnet(torrent.magnet)"
                     >
                         <ion-icon name="magnet-outline"></ion-icon>
