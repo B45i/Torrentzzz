@@ -1,9 +1,10 @@
 <script lang="ts">
+    export let torrent;
 </script>
 
 <div class="torrent">
     <div class="details">
-        <h3>Torrent Name</h3>
+        <h3>{torrent.title}</h3>
         <div>Source: Torrent Source</div>
     </div>
     <button>copy</button>
@@ -12,13 +13,15 @@
 <style>
     .torrent {
         padding: 1rem;
-        background-color: var(--clr-gray-lite);
+        border: 1px solid var(--clr-accent);
         display: flex;
         align-items: center;
-        margin-top: 1rem;
+        margin: 1rem;
+        gap: 1rem;
     }
 
     .details {
         flex-grow: 1;
+        word-break: break-word;
     }
 </style>

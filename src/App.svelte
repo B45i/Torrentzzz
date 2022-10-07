@@ -13,7 +13,6 @@
                 torrents = (data.torrents || []).filter(
                     torrent => torrent.magnet
                 );
-                console.log(torrents);
             }
         } catch (error) {
             // todo: proper error handling
@@ -30,7 +29,9 @@
 
 <Search on:search={handleSearch} />
 <main>
-    <Torrent />
+    {#each torrents as torrent}
+        <Torrent bind:torrent />
+    {/each}
 </main>
 
 <style>

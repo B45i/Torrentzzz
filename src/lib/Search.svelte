@@ -3,6 +3,7 @@
     // Trim text
     // Disable search button if no text
     // disable search button if loading
+    // search on enter
     import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher();
 
@@ -32,6 +33,8 @@
         padding: 1rem;
         padding-bottom: 2rem;
         background-color: var(--clr-gray-lite);
+        position: sticky;
+        top: 0;
     }
 
     .search-bar {
