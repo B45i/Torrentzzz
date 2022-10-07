@@ -35,6 +35,7 @@ input {
 button {
     background-color: var(--clr-green);
     color: var(--clr-gray);
+    fill: var(--clr-gray);
     cursor: pointer;
 }
 
@@ -42,6 +43,7 @@ button:hover {
     outline: 1px solid var(--clr-green);
     background-color: var(--clr-gray);
     color: var(--clr-green);
+    fill: var(--clr-green);
 }
 
 #app {
