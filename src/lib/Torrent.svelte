@@ -1,7 +1,11 @@
 <script lang="ts">
-    import copyIcon from '../assets/copy.svg';
+    import CopyIcon from './Icons/CopyIcon.svelte';
 
     export let torrent;
+
+    const handleCopy = (magnet: string) => {
+        navigator.clipboard.writeText(magnet);
+    };
 </script>
 
 <div class="torrent">
@@ -23,8 +27,8 @@
             {/if}
         </div>
     </div>
-    <button>
-        <img src={copyIcon} />
+    <button on:click={() => handleCopy(torrent.magnet)}>
+        <CopyIcon />
     </button>
 </div>
 

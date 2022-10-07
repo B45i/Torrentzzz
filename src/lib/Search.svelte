@@ -1,9 +1,9 @@
 <script lang="ts">
     // todo:
-    // Trim text
+    // search on enter
+    // Trim text on search
     // Disable search button if no text
     // disable search button if loading
-    // search on enter
     import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher();
 
