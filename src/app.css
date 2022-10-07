@@ -1,0 +1,51 @@
+:root {
+    --clr-gray: #1f2c3a;
+    --clr-gray-lite: #283645;
+    --clr-accent: #5f6c79;
+    --clr-green: #bcff86;
+}
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--clr-gray);
+    color: #fff;
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+        'Helvetica Neue', sans-serif;
+}
+
+input,
+button {
+    border: 0;
+    outline: 0;
+    padding: 1rem;
+    color: #fff;
+}
+
+input {
+    background-color: var(--clr-gray);
+}
+
+button {
+    background-color: var(--clr-green);
+    color: var(--clr-gray);
+    fill: var(--clr-gray);
+    cursor: pointer;
+}
+
+button:hover {
+    outline: 1px solid var(--clr-green);
+    background-color: var(--clr-gray);
+    color: var(--clr-green);
+    fill: var(--clr-green);
+}
+
+#app {
+    /* height: 100vh; */
+}
