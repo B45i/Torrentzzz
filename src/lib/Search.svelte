@@ -20,6 +20,7 @@
         margin-top: 1rem;
         display: flex;
     }
+
     .search-bar > input {
         flex-grow: 1;
     }
