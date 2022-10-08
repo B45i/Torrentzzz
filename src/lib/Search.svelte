@@ -1,6 +1,7 @@
 <script lang="ts">
     // todo:
     // search on enter
+    // make list empty before api call
     // Trim text on search
     // Disable search button if no text
     // disable search button if loading
