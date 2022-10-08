@@ -1,8 +1,14 @@
 <script lang="ts">
+    import { onMount } from 'svelte';
     import Search from './lib/Search.svelte';
     import Torrent from './lib/Torrent.svelte';
 
+    const BASE_URL = 'https://thawing-hamlet.onrender.com';
     let torrents = [];
+
+    onMount(async () => {
+        fetch(BASE_URL); // wake up backend from sleep
+    });
 
     const handleSearch = async ({ detail }) => {
         const { searchTerm } = detail;
@@ -21,9 +27,7 @@
     };
 
     const getTorrents = async searchTerm => {
-        return fetch(
-            `https://thawing-hamlet-05815.herokuapp.com/search/${searchTerm}`
-        );
+        return fetch(`${BASE_URL}/search/${searchTerm}`);
     };
 </script>
 
