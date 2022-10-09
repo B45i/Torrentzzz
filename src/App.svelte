@@ -1,10 +1,12 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+    import Progress from './lib/Progress.svelte';
     import Search from './lib/Search.svelte';
     import Torrent from './lib/Torrent.svelte';
 
     const BASE_URL = 'https://thawing-hamlet.onrender.com';
     let torrents = [];
+    let isLoading = false;
 
     onMount(async () => {
         fetch(BASE_URL); // wake up backend from sleep
@@ -32,6 +34,7 @@
 </script>
 
 <Search on:search={handleSearch} />
+<Progress bind:isLoading />
 <main>
     {#each torrents as torrent}
         <Torrent bind:torrent />
