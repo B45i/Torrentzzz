@@ -9,6 +9,7 @@
     const dispatch = createEventDispatcher();
 
     let searchTerm = '';
+    let submittedValue;
 
     const handleSearch = () => {
         dispatch('search', {
@@ -19,14 +20,14 @@
 
 <header>
     <h1>Torrentzzz</h1>
-    <div class="search-bar">
-        <input
-            bind:value={searchTerm}
-            type="text"
-            placeholder="Search here captain 🏴‍☠️"
-        />
-        <button on:click={handleSearch}>Search</button>
-    </div>
+        <form class="search-bar" on:submit|preventDefault={handleSearch}>
+            <input
+                bind:value={searchTerm}
+                type="text"
+                placeholder="Search here captain 🏴‍☠️"
+            />
+            <button type="submit">Search</button>
+        </form>
 </header>
 
 <style>
