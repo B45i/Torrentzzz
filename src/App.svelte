@@ -37,7 +37,7 @@
     };
 </script>
 
-<Search on:search={handleSearch} />
+<Search bind:isLoading on:search={handleSearch} />
 <Progress bind:isLoading />
 <main>
     {#each torrents as torrent}
