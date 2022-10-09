@@ -14,6 +14,7 @@
 
     const handleSearch = async ({ detail }) => {
         torrents = [];
+        isLoading = true;
         const { searchTerm } = detail;
         try {
             const response = await getTorrents(searchTerm);
@@ -22,9 +23,11 @@
                 torrents = (data.torrents || []).filter(
                     torrent => torrent.magnet
                 );
+                isLoading = false;
             }
         } catch (error) {
             // todo: proper error handling
+            isLoading = false;
             console.log(error.message);
         }
     };
@@ -35,7 +38,7 @@
 </script>
 
 <Search on:search={handleSearch} />
-<!-- <Progress bind:isLoading /> -->
+<Progress bind:isLoading />
 <main>
     {#each torrents as torrent}
         <Torrent bind:torrent />
