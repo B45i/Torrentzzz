@@ -9,7 +9,6 @@
     const dispatch = createEventDispatcher();
 
     let searchTerm = '';
-    let submittedValue;
 
     const handleSearch = () => {
         dispatch('search', {
