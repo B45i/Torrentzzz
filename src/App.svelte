@@ -13,6 +13,7 @@
     });
 
     const handleSearch = async ({ detail }) => {
+        torrents = [];
         const { searchTerm } = detail;
         try {
             const response = await getTorrents(searchTerm);
@@ -34,7 +35,7 @@
 </script>
 
 <Search on:search={handleSearch} />
-<Progress bind:isLoading />
+<!-- <Progress bind:isLoading /> -->
 <main>
     {#each torrents as torrent}
         <Torrent bind:torrent />
