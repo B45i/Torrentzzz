@@ -6,6 +6,7 @@
     // Disable search button if no text
     // disable search button if loading
     import { createEventDispatcher } from 'svelte';
+    import logo from '../logo.svg'
     const dispatch = createEventDispatcher();
     export let isLoading = false;
     let searchTerm = '';
@@ -18,7 +19,7 @@
 </script>
 
 <header>
-    <h1>Torrentzzz</h1>
+    <h1><img src={logo} alt="logo"/>Torrentzzz</h1>
         <form class="search-bar" on:submit|preventDefault={handleSearch}>
             <input
                 disabled={isLoading}
@@ -31,6 +32,16 @@
 </header>
 
 <style>
+    h1{ 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    img{
+        width:80px;
+        border-radius: 10px;
+        margin-right: 20px;
+    }
     header {
         padding: 1rem;
         padding-bottom: 2rem;
