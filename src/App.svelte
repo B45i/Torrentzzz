@@ -7,18 +7,19 @@
     const BASE_URL = 'https://thawing-hamlet.onrender.com';
     let torrents = [];
     let isLoading = false;
-
+    let cancelled = false;
     onMount(async () => {
         fetch(BASE_URL); // wake up backend from sleep
     });
 
     const handleSearch = async ({ detail }) => {
+        cancelled = false;
         torrents = [];
         isLoading = true;
         const { searchTerm } = detail;
         try {
             const response = await getTorrents(searchTerm);
-            if (response.status === 200) {
+            if (response.status === 200 && !cancelled) {
                 const data = await response.json();
                 torrents = (data.torrents || []).filter(
                     torrent => torrent.magnet
@@ -32,12 +33,19 @@
         }
     };
 
+    const handleCancel = () => {
+        torrents = [];
+        isLoading = false;
+        cancelled = true;
+    }
+
+
     const getTorrents = async searchTerm => {
         return fetch(`${BASE_URL}/search/${searchTerm}`);
     };
 </script>
 
-<Search bind:isLoading on:search={handleSearch} />
+<Search bind:isLoading on:search={handleSearch} on:cancel={handleCancel} />
 <Progress bind:isLoading />
 <main>
     {#each torrents as torrent}

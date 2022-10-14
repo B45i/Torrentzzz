@@ -16,6 +16,9 @@
             searchTerm,
         });
     };
+    const handleCancel = () => {
+        dispatch('cancel');
+    };
 </script>
 
 <header>
@@ -28,6 +31,9 @@
                 placeholder="Search here captain 🏴‍☠️"
             />
             <button disabled={isLoading} type="submit">Search</button>
+            {#if isLoading}
+            <button style="background:red" on:click={handleCancel}>Cancel</button>
+            {/if}
         </form>
 </header>
 
