@@ -7,7 +7,7 @@
     // disable search button if loading
     import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher();
-
+    export let isLoading = false;
     let searchTerm = '';
 
     const handleSearch = () => {
@@ -19,14 +19,15 @@
 
 <header>
     <h1>Torrentzzz</h1>
-    <div class="search-bar">
-        <input
-            bind:value={searchTerm}
-            type="text"
-            placeholder="Search here captain 🏴‍☠️"
-        />
-        <button on:click={handleSearch}>Search</button>
-    </div>
+        <form class="search-bar" on:submit|preventDefault={handleSearch}>
+            <input
+                disabled={isLoading}
+                bind:value={searchTerm}
+                type="text"
+                placeholder="Search here captain 🏴‍☠️"
+            />
+            <button disabled={isLoading} type="submit">Search</button>
+        </form>
 </header>
 
 <style>
